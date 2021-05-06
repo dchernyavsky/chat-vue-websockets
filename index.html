@@ -74,7 +74,7 @@
     <!-- container -->
     <div class="container medium">
         <!-- chat-box -->
-        <div class="chat-box">
+        <div class="chat-box" id="app-chat">
             <!-- chat-box__header -->
             <div class="chat-box__header">
                 <a href="#" class="back"><i class="icon icon-left"></i></a>
@@ -87,53 +87,30 @@
                 <div class="chat-box__separator">
                     12 июля
                 </div>
-                <div class="chat-box__message">
-                    <div class="name">Служба поддержки</div>
-                    <div class="message">
-                        Добрый день, Дмитрий. <br>Опишите вашу проблему более подробно. У вас возникли ошибки (баги) на сайте?
-                        <div class="time">13:05</div>
-                        <div class="clear"></div>
+                <div v-for="mess in messages">
+                    <div :class="getChatBoxMessageClassName('chat-box__message', 'own', mess.isOwn)">
+                        <div class="name">{{mess.name}}</div>
+                        <div class="message">
+                            {{mess.message}}
+                            <div class="time">{{mess.time}}</div>
+                            <div class="clear"></div>
+                        </div>
                     </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
-                <div class="chat-box__message own">
-                    <div class="message">
-                        Добрый день, Дмитрий. <br>Опишите вашу проблему более подробно. У вас возникли ошибки (баги) на сайте?
-                        <div class="time">13:05</div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="chat-box__message">
-                    <div class="name">Служба поддержки</div>
-                    <div class="message">
-                        Добрый день, Дмитрий. <br>Опишите вашу проблему более подробно. У вас возникли ошибки (баги) на сайте?
-                        <div class="time">13:05</div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="chat-box__message own">
-                    <div class="message">
-                        Добрый день, Дмитрий. <br>Опишите вашу проблему более подробно. У вас возникли ошибки (баги) на сайте?
-                        <div class="time">13:05</div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
             </div>
             <!-- /chat-box__messages -->
             <!-- chat-box__form -->
-            <form class="chat-box__form main-form">
-                <textarea class="input-style" rows="7"></textarea>
+            <div class="chat-box__form main-form">
+                <textarea v-model="inputMessageValue" class="input-style" rows="7"></textarea>
                 <div class="row">
                     <label class="main-form__item file-field">
                     </label>
                     <div class="main-form__submit">
-                        <button type="submit" class="radius-button standart rounded">Отправить</button>
+                        <button class="radius-button standart rounded" @click="sendMessage">Отправить</button>
                     </div>
                 </div>
-            </form>
+            </div>
             <!-- /chat-box__form -->
         </div>
         <!-- /chat-box -->
@@ -188,5 +165,7 @@
 
     <script src="js/script.js"></script>
     <script src="js/animation.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html>
