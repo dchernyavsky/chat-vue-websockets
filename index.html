@@ -74,45 +74,7 @@
     <!-- container -->
     <div class="container medium">
         <!-- chat-box -->
-        <div class="chat-box" id="app-chat">
-            <!-- chat-box__header -->
-            <div class="chat-box__header">
-                <a href="#" class="back"><i class="icon icon-left"></i></a>
-                <h1 class="main-title">Добро пожаловать в онлаин-чат службы поддержки</h1>
-                <div style="width: 12px;" class=""></div>
-            </div>
-            <!-- /chat-box__header -->
-            <!-- chat-box__messages -->
-            <div class="chat-box__messages">
-                <div class="chat-box__separator">
-                    12 июля
-                </div>
-                <div v-for="mess in messages">
-                    <div :class="getChatBoxMessageClassName('chat-box__message', 'own', mess.isOwn)">
-                        <div class="name">{{mess.name}}</div>
-                        <div class="message">
-                            {{mess.message}}
-                            <div class="time">{{mess.time}}</div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!-- /chat-box__messages -->
-            <!-- chat-box__form -->
-            <div class="chat-box__form main-form">
-                <textarea v-model="inputMessageValue" class="input-style" rows="7"></textarea>
-                <div class="row">
-                    <label class="main-form__item file-field">
-                    </label>
-                    <div class="main-form__submit">
-                        <button class="radius-button standart rounded" @click="sendMessage">Отправить</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /chat-box__form -->
-        </div>
+        <div id="app-chat"></div>
         <!-- /chat-box -->
     </div>
     <!-- /container -->
